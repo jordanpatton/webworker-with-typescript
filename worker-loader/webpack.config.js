@@ -1,21 +1,16 @@
-// webpack.config.js
-let webpack = require('webpack');
-
 module.exports = {
-    entry: './src/entry.ts',
+    entry: './src/main.ts',
     output: {
-        filename: "dist/magicIO.js",
-        library: "magicIO",
+        filename: "bundle.js",
+        library: "bundle",
         libraryTarget: "umd"
     },
     resolve: {
-        // Add '.ts' and '.tsx' as a resolvable extension.
-        extensions: [".ts", ".tsx", ".js"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
         modules: ["node_modules"]
     },
     module: {
         rules: [
-            // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
             {
                 test: /\.tsx?$/,
                 use: {

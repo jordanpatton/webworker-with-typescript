@@ -1,5 +1,5 @@
 {
-  "name": "webworker",
+  "name": "webworker-with-typescript--worker-loader",
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack",
