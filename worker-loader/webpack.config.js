@@ -2,8 +2,7 @@ module.exports = {
     entry: './src/main.ts',
     output: {
         filename: "bundle.js",
-        library: "bundle",
-        libraryTarget: "umd"
+        path: __dirname + "/dist"
     },
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"],

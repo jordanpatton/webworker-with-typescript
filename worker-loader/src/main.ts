@@ -1,39 +1,15 @@
-import MyWorker = require("worker-loader?name=dist/[name].js!./worker");
+import ExampleWorker = require("worker-loader?name=dist/[name].js!./worker");
 
-abstract class Printer {
-    abstract print(str: string): void;
-}
-
-class AlertPrinter {
-    print(str: string) {
-        window.alert(str);
-    }
-}
-
-abstract class Reader {
-    abstract read(): string;
-}
-
-class PromptReader {
-    read(): string {
-        return window.prompt("What is your input?") || "";
-    }
-}
-
-class IOManager {
-    constructor(private reader: Reader, private printer: Printer) {
-    }
-
-    performIO() {
-        let worker = new MyWorker();
-        let message = this.reader.read();
+class Main {
+    static run() {
+        let worker = new ExampleWorker();
+        let message = window.prompt('What is your input?') || '';
         worker.onmessage = (ev: MessageEvent) => {
-            this.printer.print(ev.data);
+            window.alert(ev.data);
             worker.terminate();
         };
         worker.postMessage(message);
     }
 }
 
-const magicIO = new IOManager(new PromptReader(), new AlertPrinter());
-export = magicIO;
+Main.run();
