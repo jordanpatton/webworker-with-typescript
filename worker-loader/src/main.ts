@@ -1,4 +1,4 @@
-import ExampleWorker = require('worker-loader?name=dist/[name].js!./example.worker');
+import ExampleWorker = require('./example.worker.ts');
 
 class Main {
     static run() {
