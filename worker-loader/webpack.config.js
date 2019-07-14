@@ -5,16 +5,14 @@ module.exports = {
         path: __dirname + "/dist"
     },
     resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        extensions: [".js", ".json", ".jsx", ".ts", ".tsx"],
         modules: ["node_modules"]
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: {
-                    loader: "ts-loader"
-                }
+                loader: "awesome-typescript-loader"
             }
         ]
     }
