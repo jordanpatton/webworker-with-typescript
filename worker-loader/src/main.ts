@@ -1,14 +1,14 @@
-import ExampleWorker = require('worker-loader?name=dist/[name].js!./worker');
+import ExampleWorker = require('worker-loader?name=dist/[name].js!./example.worker');
 
 class Main {
     static run() {
-        const worker = new ExampleWorker();
+        const exampleWorker = new ExampleWorker();
         const message = window.prompt('What is your input?') || '';
-        worker.onmessage = (ev: MessageEvent) => {
+        exampleWorker.onmessage = (ev: MessageEvent) => {
             window.alert(ev.data);
-            worker.terminate();
+            exampleWorker.terminate();
         };
-        worker.postMessage(message);
+        exampleWorker.postMessage(message);
     }
 }
 
